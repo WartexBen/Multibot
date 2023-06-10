@@ -16,7 +16,7 @@ function GonWebhook(Wartex)
     url = "https://komikkamvret.com/wp-content/uploads/2021/04/Pus-Nyangami-Headbang.gif"
     }
     $color = Get-Random -Minimum 0 -Maximum 16777215
-    $title = '@872027223337603073 - Rotation'
+    $title = 'Wartex#7171 - Rotation'
     $description = "**]]..Wartex..[[**"
   
     $footer = [PSCustomObject]@{
