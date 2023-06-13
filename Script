@@ -16,7 +16,7 @@ function GonWebhook(Wartex)
     url = ""
     }
     $color = Get-Random -Minimum 0 -Maximum 16777215
-    $title = 'Wartex X Med'
+    $title = 'Wartex X Med - Rotation Script'
     $description = "**]]..Wartex..[[**"
   
     $footer = [PSCustomObject]@{
