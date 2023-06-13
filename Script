@@ -21,7 +21,7 @@ function GonWebhook(Wartex)
   
     $footer = [PSCustomObject]@{
         icon_url = "https://cdn.discordapp.com/emojis/978628955907170314.gif?size=96&quality=lossless"
-        text = "]].."Wartex#7171 & https://discord.gg/URFy4VhYqz | Date : "..(os.date"%d/%m/%y":upper().." Hour : ")..os.date("%I")..":"..os.date("%M").." "..os.date("%p"):upper()..[["
+        text = "]].."https://discord.gg/URFy4VhYqz | Date : "..(os.date"%d/%m/%y":upper().." Hour : ")..os.date("%I")..":"..os.date("%M").." "..os.date("%p"):upper()..[["
     }
   
     $embedObject = [PSCustomObject]@{
