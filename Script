@@ -13,7 +13,7 @@ function GonWebhook(Wartex)
     local script = [[
     $webHookUrl = "]]..WebhookUrl..[["
     $thumbnailObject = [PSCustomObject]@{
-    url = "https://cdn.discordapp.com/attachments/1107729601922338856/1118116994538020874/Free_Neon_Cat_Animated_Birthday_Video_Gif_Instagram_6.gif"
+    url = "https://cdn.discordapp.com/attachments/1107729601922338856/1118118189348425828/Free_Neon_Cat_Animated_Birthday_Video_Gif_Instagram_9.gif"
     }
     $color = Get-Random -Minimum 0 -Maximum 16777215
     $title = 'Wartex#7171 & MedPatron - Rotation Script'
