@@ -593,29 +593,25 @@ function TrashTheJunks()
 end
 
 function plant(list)
-    Reconnect(list)
-    for i, tile in ipairs(world:getTiles()) do
-		Reconnect(list)
-        if bot.status == 1 then
-            if 0 == world:getTile(tile.x, tile.y).fg and 0 ~= world:getTile(tile.x, tile.y + 1).fg and world:getTile(tile.x, tile.y + 1).fg ~= SeedID and inventory:getItemCount(SeedID) > 0 then
-                Reconnect(list)
-                bot:findPath(tile.x,tile.y)
-                sleep(PlantDelay)
-		if bot:isInTile(tile.x,tile.y) then
-                	bot:place(tile.x,tile.y,SeedID)
-			sleep(PlantDelay)
-		else
-			bot:findPath(tile.x,tile.y)
-                	sleep(PlantDelay)
-			if bot:isInTile(tile.x,tile.y) then
-				bot:place(tile.x,tile.y,SeedID)
-				sleep(PlantDelay)
-			end
-		end
-            end
-        else
-            Reconnect(list)
+    for _,tile in pairs(getTiles()) do
+        if findItem(SeedID) == 0 and not dontPlant then
+            take(list)
+            sleep(100)
         end
+        if tile.flags ~= 0 and tile.y ~= 0 and getTile(tile.x,tile.y - 1).fg == 0 then
+            if not blacklistTile or check(tile.x,tile.y) then
+                findPath(tile.x,tile.y - 1)
+                while getTile(tile.x,tile.y - 1).fg == 0 and getTile(tile.x,tile.y).flags ~= 0 do
+                    place(itmSeed,0,0)
+                    sleep(delayPlant)
+                    reconnect(world,doorFarm,tile.x,tile.y - 1)
+                end
+            end
+        end
+    end
+    if findItem(SeedID) >= 100 then
+        storeSeed(world)
+        sleep(100)
     end
 end
 
