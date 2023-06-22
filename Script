@@ -77,6 +77,21 @@ function scanTree(id)
     return { Ready = countReady, Unready = countUnready }
 end
 
+functifunction tileDrop1(x,y,num)
+    local count = 0
+    local stack = 0
+    for _,obj in pairs(getObjects()) do
+        if round(obj.x / 32) == x and math.floor(obj.y / 32) == y then
+            count = count + obj.count
+            stack = stack + 1
+        end
+    end
+    if stack < 20 and count <= (4000 - num) then
+        return true
+    end
+    return false
+end
+
 function tileDrop2(x,y,num)
     local count = 0
     local stack = 0
@@ -90,6 +105,33 @@ function tileDrop2(x,y,num)
         return true
     end
     return false
+end
+
+function storePack()
+    for _,pack in pairs(packList) do
+        for _,tile in pairs(getTiles()) do
+            if tile.fg == patokanPack or tile.bg == patokanPack then
+                if tileDrop1(tile.x,tile.y,findItem(pack)) then
+                    while math.floor(getBot().x / 32) ~= (tile.x - 1) or math.floor(getBot().y / 32) ~= tile.y do
+                        findPath(tile.x - 1,tile.y)
+                        sleep(1000)
+                        reconnect(storagePack,doorPack,tile.x - 1,tile.y)
+                    end
+                    while findItem(pack) > 0 and tileDrop1(tile.x,tile.y,findItem(pack)) do
+                        sendPacket(2,"action|drop\n|itemID|"..pack)
+                        sleep(1000)
+                        sendPacket(2,"action|dialog_return\ndialog_name|drop_item\nitemID|"..pack.."|\ncount|"..findItem(pack))
+                        sleep(1000)
+                        reconnect(storagePack,doorPack,tile.x - 1,tile.y)
+                    end
+                end
+            end
+            if findItem(pack) == 0 then
+                break
+            end
+        end
+    end
+end
 end
 
 function tarama(ids)
