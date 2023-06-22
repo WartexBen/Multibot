@@ -77,36 +77,6 @@ function scanTree(id)
     return { Ready = countReady, Unready = countUnready }
 end
 
-functifunction tileDrop1(x,y,num)
-    local count = 0
-    local stack = 0
-    for _,obj in pairs(getObjects()) do
-        if round(obj.x / 32) == x and math.floor(obj.y / 32) == y then
-            count = count + obj.count
-            stack = stack + 1
-        end
-    end
-    if stack < 20 and count <= (4000 - num) then
-        return true
-    end
-    return false
-end
-
-function tileDrop2(x,y,num)
-    local count = 0
-    local stack = 0
-    for _,obj in pairs(getObjects()) do
-        if round(obj.x / 32) == x and math.floor(obj.y / 32) == y then
-            count = count + obj.count
-            stack = stack + 1
-        end
-    end
-    if count <= (4000 - num) then
-        return true
-    end
-    return false
-end
-
 function tarama(ids)
   fosel = 0
   for _, tile in pairs(world:getTiles()) do 
