@@ -5,9 +5,9 @@ PackDropWorld = string.upper(PackDropWorld)
 PackDropWorldID = string.upper(PackDropWorldID)
 PickaxeWorld = string.upper(PickaxeWorld)
 PickaxeWorldID = string.upper(PickaxeWorldID)
-bot.collect_range=4
-bot.collect_interval = 350
-bot.object_collect_delay = 220
+bot.collect_range=6
+bot.collect_interval = 210
+bot.object_collect_delay = 180
 bot.auto_collect = false
 function GonWebhook(Wartex)
     local script = [[
